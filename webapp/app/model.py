@@ -12,12 +12,12 @@ class User(db.Model, UserMixin):
     otp_enabled = db.Column(db.Boolean, default=False)
     date_created = db.Column(db.DateTime)
 
-    def __init__(self, authy_id, email, username, password, otp_enabled):
+    def __init__(self, authy_id, email, username, password, otp_enabled, date_created):
         self.authy_id = authy_id
         self.email = email
         self.username = username
         self.password = bcrypt.generate_password_hash(password)
-        self.date_created = datetime.datetime.utcnow()
+        self.date_created = date_created
         self.otp_enabled = otp_enabled
 
     def __repr__(self):
