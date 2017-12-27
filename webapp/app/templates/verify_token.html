@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky - Register{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block page_content %}
+    <div class="page-header">
+        {{ form.csrf_token }}
+        <h1>Verify token</h1></div>
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+        <p>didnt reeieve the code
+            <a href="{{ url_for('request_new_token') }}">Click here to request a new code</a>
+        </p>
+        <p>
+            <a href="{{ url_for('get_token_call') }}">Click here to get a call with a new code</a>
+        </p>
+    </div>
+
+{% endblock %}
